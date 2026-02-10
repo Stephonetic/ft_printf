@@ -1,28 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shannema <shannema@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/06 15:08:09 by shannema          #+#    #+#             */
-/*   Updated: 2026/02/10 23:28:08 by shannema         ###   ########.fr       */
+/*   Created: 2025/10/25 20:44:57 by shannema          #+#    #+#             */
+/*   Updated: 2026/02/10 22:54:21 by shannema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdarg.h>
-# include <unistd.h>
-# include <stddef.h>
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *s);
-int	ft_putnbr(int n);
-int	ft_putnbr_unsigned(unsigned int n);
-int	ft_puthex(unsigned long n, char format);
-int	ft_putptr(void *ptr);
-
-#endif
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
+}
+// #include <string.h>
+// #include <stdio.h>
+// int	main(void)
+// {
+// 	printf("%zu\n", ft_strlen("hello"));
+// 	return (0);
+// }
