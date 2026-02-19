@@ -84,7 +84,7 @@ Including it allows the compiler to know how to correctly call the library funct
 
 
 #include "ft_printf.h"
-This inclusion is required in every source file that uses functions from libft.
+This inclusion is required in every source file that uses functions from ft_printf.
 
 ### 2. Build Rules & Project Requirements
 
@@ -106,18 +106,17 @@ The resulting static library (`ft_printf.h`) is designed to be reused in other p
 copying the library sources and Makefile into a dedicated `ft_printf.h/` directory and compiling
 it through its own Makefile.
 
-Although not submitted, writing custom test programs is strongly encouraged to validate
-functionality and ensure reliability during peer evaluations and future reuse.
-
 ### 3. Execution
 
 All source files compile with the flags `-Wall -Wextra -Werror`, and the library is built
 using `cc` and `ar` without unnecessary relinking.
-After successful compilation and linking, the resulting executable can be run normally:
+After successful compilation and linking, the resulting executable can be run as is mentioned in the 42 subjects which is as follows:
 
 `./a.out`
 
 # Resources
+
+- Peer to peer teaching, tips and implementation of suggestions
 
 - Written in C, following the 42 Norm.
 
