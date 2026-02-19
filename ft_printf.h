@@ -6,7 +6,7 @@
 /*   By: shannema <shannema@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/06 15:08:09 by shannema          #+#    #+#             */
-/*   Updated: 2026/02/10 23:28:08 by shannema         ###   ########.fr       */
+/*   Updated: 2026/02/19 20:52:01 by shannema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,14 @@
 # include <stdarg.h>
 # include <unistd.h>
 # include <stddef.h>
+
+// # ifdef __APPLE__
+// #  define PTRNULL "0x0"
+// # elif defined(__linux__)
+// #  define PTRNULL "(nil)"
+// # else
+// #  define PTRNULL "(nil)"
+// # endif
 
 int	ft_printf(const char *format, ...);
 int	ft_putchar(char c);

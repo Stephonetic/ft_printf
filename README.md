@@ -3,153 +3,92 @@
 # Description
 **ft_printf** 
 
+ft_printf is a reimplementation of the standard C printf function and serves to display a formatted string on the screen, which we do with format specifiers.
+
+ft_printf is a custom reimplementation of the standard C `printf` function.  
+It handles basic format specifiers and reproduces formatted output using variadic arguments and the `write` system call.
+
+The goal of this project is to understand:
+- Variadic functions (`stdarg.h`)
+- Format string parsing
+- Base conversion
+- Low-level output handling
+
+Prototype:
+
+int ft_printf(const char *format, ...);
 
 ---
 
-**Library Overview**
+**Format Specifiers**
 
-The libft library is divided into several categories of functions.
-
----
-
-**1. Standard C Library Reimplementations**
-
-Functions that replicate behavior from <ctype.h>, <string.h>, <stdlib.h>, etc.:
-
-`ft_isalpha`
-
-`ft_isdigit`
-
-`ft_isalnum`
-
-`ft_isascii`
-
-`ft_isprint`
-
-`ft_strlen`
-
-`ft_memset`
-
-`ft_bzero`
-
-`ft_memcpy`
-
-`ft_memmove`
-
-`ft_strlcpy`
-
-`ft_strlcat`
-
-`ft_toupper`
-
-`ft_tolower`
-
-`ft_strchr`
-
-`ft_strrchr`
-
-`ft_strncmp`
-
-`ft_memchr`
-
-`ft_memcmp`
-
-`ft_strnstr`
-
-`ft_atoi`
-
-`ft_calloc`
-
-`ft_strdup`
-
----
-
-**2. Additional Utility Functions**
-
-Functions not present in the standard library but frequently useful:
-
-`ft_substr`
-
-`ft_strjoin`
-
-`ft_strtrim`
-
-`ft_split`
-
-`ft_itoa`
-
-`ft_strmapi`
-
-`ft_striteri`
-
-`ft_putchar_fd`
-
-`ft_putstr_fd`
-
-`ft_putendl_fd`
-
-`ft_putnbr_fd`
-
----
-
-**3. Bonus: Linked List Functions**
-
-If the bonus part is implemented, the library also includes a linked list API using the
-following structure:
-
-typedef struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
+| Character | Description |
+|-----------|-------------|
+| `%` | Prints a `%` character. |
+| `d`, `i` | Print an `int` as a signed integer. `%d` and `%i` are synonymous for output, but differ with `scanf`: `%i` interprets numbers as hexadecimal if preceded by `0x`, and octal if preceded by `0`. |
+| `u` | Print a decimal `unsigned int`. |
+| `x`, `X` | Print an `unsigned int` as a hexadecimal number. `x` uses lowercase letters; `X` uses uppercase letters. |
+| `s` | Print a null-terminated (`\0`) string. |
+| `c` | Print a single character (`char`). |
+| `p` | Print the address of a pointer (or any variable) in hexadecimal format. Used for `void *` data type. |
 
 
-**Associated functions:**
-
-`ft_lstnew`
-
-`ft_lstadd_front`
-
-`ft_lstsize`
-
-`ft_lstlast`
-
-`ft_lstadd_back`
-
-`ft_lstdelone`
-
-`ft_lstclear`
-
-`ft_lstiter`
-
-`ft_lstmap`
-
-These functions provide basic list creation, traversal, modification, and deletion.
 
 # Instructions
 
-## How C Libraries (libft) Are Used
+## How ft_printf is used
 
-In C, a **library** is a collection of compiled functions that can be reused across
-multiple programs. The **libft** project produces a **static library** (`libft.a`),
-which contains precompiled object files of all implemented functions.
+**⚙️ Implementation Overview**
 
-Using a library in C involves **three main steps**: inclusion, linking, and execution.
+ft_printf uses a linear parsing algorithm:
+
+Iterate through the format string.
+
+Print regular characters directly.
+
+When % is found, dispatch to a specific conversion function.
+
+Count and return the total number of printed characters.
+
+---
+
+
+**Algorithm Choice**
+
+Single-pass parsing → O(n) complexity.
+
+Number conversions use recursive or iterative base division.
+
+No dynamic memory allocation required.
+
+Modular structure (one function per conversion).
+
+This approach keeps the implementation simple, efficient, and norm-compliant.
+
+---
+
+**🚀 Installation**
+
+git clone
+
+https://github.com/Stephonetic/ft_printf.git
+
+make
 
 ---
 
 ### 1. Include the Header File
 
-The header file (`libft.h`) contains function prototypes and data structure definitions.
+The header file (`ft_printf.h`) contains function prototypes and data structure definitions.
 Including it allows the compiler to know how to correctly call the library functions.
 
 
-#include "libft.h"
+#include "ft_printf.h"
 This inclusion is required in every source file that uses functions from libft.
 
 ### 2. Build Rules & Project Requirements
 
-The **libft** project is written in **C** and strictly follows the **42 Norm**.  
+The **ft_printf** project is written in **C** and strictly follows the **42 Norm**.  
 
 The provided `Makefile` includes the required rules:
 
@@ -157,18 +96,14 @@ The provided `Makefile` includes the required rules:
 - `clean`
 - `fclean`
 - `re`
-- `bonus` (when applicable)
 
 Memory safety is a core requirement:
 - Functions must not crash unexpectedly (segmentation fault, double free, etc.)
 - All heap-allocated memory must be properly freed
 - Memory leaks are not tolerated
 
-If **bonus functions** are implemented, they are compiled via the `bonus` rule and kept
-separate from the mandatory part, as required by the subject.
-
-The resulting static library (`libft.a`) is designed to be reused in other projects by
-copying the library sources and Makefile into a dedicated `libft/` directory and compiling
+The resulting static library (`ft_printf.h`) is designed to be reused in other projects by
+copying the library sources and Makefile into a dedicated `ft_printf.h/` directory and compiling
 it through its own Makefile.
 
 Although not submitted, writing custom test programs is strongly encouraged to validate
@@ -182,24 +117,6 @@ After successful compilation and linking, the resulting executable can be run no
 
 `./a.out`
 
-All libft functions are now available at runtime as part of the compiled program.
-
----
-
-The 42 curriculum exclusively uses static libraries for reliability and portability. Libft, as a first project, is specifically important for any future 42 projects, because:
-
-- It provides commonly used functions without relying on libc
-
-- It ensures consistent behavior across projects
-
-- It improves code readability and maintainability
-
-- It reduces duplicated code
-
-**Many later 42 projects (such as ft_printf, get_next_line, cub3D, and others)
-depend directly on libft.**
-
-
 # Resources
 
 - Written in C, following the 42 Norm.
@@ -208,15 +125,9 @@ depend directly on libft.**
 
 - Memory allocation is carefully managed to avoid leaks.
 
-All functions are protected against undefined behavior when possible.
+- man 3 printf
 
----
+- man 3 stdarg
 
-AI tools were used as learning assistants, specifically for:
+- https://42-cursus.gitbook.io/guide/1-rank-01/ft_printf
 
-- Clarifying function behavior and edge cases, reviewing logic and identifying potential improvements
-
-- Helping structure documentation (such as this README).
-
-- All code was written, tested, and validated in accordance with 42 rules, and no
-AI-generated code was copied directly into the project.

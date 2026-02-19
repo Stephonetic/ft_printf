@@ -6,13 +6,13 @@
 /*   By: shannema <shannema@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 22:27:29 by shannema          #+#    #+#             */
-/*   Updated: 2026/02/10 22:54:50 by shannema         ###   ########.fr       */
+/*   Updated: 2026/02/19 20:39:43 by shannema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_putchar(char c)
+int	ft_putchar(char c)
 {
 	return (write(1, &c, 1));
 }
