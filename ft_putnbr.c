@@ -6,7 +6,7 @@
 /*   By: shannema <shannema@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 22:40:01 by shannema          #+#    #+#             */
-/*   Updated: 2026/02/10 23:38:06 by shannema         ###   ########.fr       */
+/*   Updated: 2026/02/22 03:27:03 by shannema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	ft_putnbr(int n)
 	if (n < 0)
 	{
 		write(1, "-", 1);
+		counter++;
 		num = (unsigned int)(-n);
 	}
 	else
