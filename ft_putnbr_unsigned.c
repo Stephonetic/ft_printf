@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_puthex.c                                        :+:      :+:    :+:   */
+/*   ft_putnbr_unsigned.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: shannema <shannema@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/10 23:37:58 by shannema          #+#    #+#             */
-/*   Updated: 2026/02/22 02:21:02 by shannema         ###   ########.fr       */
+/*   Created: 2026/02/22 00:41:39 by shannema          #+#    #+#             */
+/*   Updated: 2026/02/22 02:08:09 by shannema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex(unsigned long n, char format)
+unsigned int	ft_putnbr_unsigned(unsigned int n)
 {
-	int		count;
-	char	*base;
+	char			c;
+	unsigned int	num;
+	unsigned int	counter;
 
-	count = 0;
-	if (format == 'x')
-		base = "0123456789abcdef";
-	else
-		base = "0123456789ABCDEF";
+	counter = 1;
 
-	if (n >= 16)
-		count += ft_puthex(n / 16, format);
-	count += ft_putchar(base[n % 16]);
-	return (count);
+	num = n;
+	if (num >= 10)
+	{
+		counter += ft_putnbr_unsigned(num / 10);
+	}
+	c = '0' + (num % 10);
+	write(1, &c, 1);
+	return (counter);
 }

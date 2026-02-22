@@ -6,7 +6,7 @@
 /*   By: shannema <shannema@student.42heilbronn.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 22:36:13 by shannema          #+#    #+#             */
-/*   Updated: 2026/02/10 22:54:40 by shannema         ###   ########.fr       */
+/*   Updated: 2026/02/22 02:24:16 by shannema         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,5 @@ int	ft_putstr(char *s)
 		return (0);
 	}
 	write(1, s, ft_strlen(s));
+	return (0);
 }

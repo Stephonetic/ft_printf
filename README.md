@@ -112,7 +112,12 @@ All source files compile with the flags `-Wall -Wextra -Werror`, and the library
 using `cc` and `ar` without unnecessary relinking.
 After successful compilation and linking, the resulting executable can be run as is mentioned in the 42 subjects which is as follows:
 
-`./a.out`
+`make`
+
+### 4. Test Program
+
+The test main is using the prorgramm for ft_printf and can be compiled as follows:
+`make test`
 
 # Resources
 
